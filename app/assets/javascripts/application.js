@@ -16,3 +16,4 @@
 //= require joelam
 //= require charisma
 //= require uploadify
+//= require hello_world

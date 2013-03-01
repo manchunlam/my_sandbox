@@ -1,6 +1,29 @@
 # Notes for Asset Pipeline
 
-## _index_ Files
+## Including External Library
+
+### Use Directly Accessible File to Load
+
+1. Make a directory in any of the `assets` directory
+2. Copy all the contents of the library to the above directory
+3. Make a new "loader" file, any names works. Let's use `hello_world.js` for
+this example
+4. In the "loader" file, add
+
+    ```
+    //= require_tree .
+    ```
+
+5. Then in `application.js`, just require the file
+
+    ```
+    //= require hello_world
+    ```
+
+6. Please see `vendor/assets/foobar/hello_world.js` and
+`app/assets/javascripts/application.js` for an example
+
+### Use _index_ Files
 
 To use _index_ files for external library,
 
