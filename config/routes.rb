@@ -1,4 +1,8 @@
 RailsSandbox::Application.routes.draw do
+  get "blogs/index"
+
+  get "blog/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
