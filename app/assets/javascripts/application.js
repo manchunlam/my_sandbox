@@ -12,3 +12,5 @@
 //
 //= require jquery
 //= require_tree .
+//= require charisma
+//= require uploadify
