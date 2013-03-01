@@ -15,3 +15,4 @@
 //= require manchunlam
 //= require joelam
 //= require charisma
+//= require uploadify
