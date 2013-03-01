@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require_tree .
+//= require manchunlam
+//= require joelam
 //= require charisma
-//= require uploadify
