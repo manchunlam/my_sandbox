@@ -12,4 +12,3 @@
 //
 //= require jquery
 //= require_tree .
-//= require uploadify
