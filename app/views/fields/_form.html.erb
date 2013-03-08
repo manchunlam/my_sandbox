@@ -1,0 +1,14 @@
+<%= nested_form_for field do |f| %>
+  <%= f.text_field :label %>
+  <%= f.text_field :instruction %>
+
+  <%= f.fields_for :comments do |c| %>
+    <%= c.text_field :text %>
+    <%= c.link_to_remove t('.add_comment') %>
+  <% end %>
+
+  <%= f.submit %>
+  <p>
+    <%= f.link_to_add t('.remove_comment'), :comments %>
+  </p>
+<% end %>

@@ -1,0 +1,12 @@
+"zz":
+  # form helpers
+  helpers:
+    # submit button text depending on #create or #update
+    submit:
+      create: "Create a %{model}"
+      update: "Confirm changes to %{model}"
+  # namespaced by view
+  fields:
+    form:
+      remote_comment: "Remove this comment"
+      add_comment: "Add a comment"
