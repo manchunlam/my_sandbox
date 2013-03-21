@@ -5,9 +5,10 @@
 #   git config --global core.excludesfile ~/.gitignore_global
 
 # Ignore bundler config
-/.bundle
+/.bundle/*
+!/.bundle/config
 # Ignore gem executables
-bin
+/bin
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
