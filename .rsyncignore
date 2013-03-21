@@ -1,0 +1,15 @@
+.git
+**.swp
+.bundle
+.DS_Store
+.rspec
+.sass-cache
+.rvmrc
+db/*.sqlite3
+log/*.log
+tmp
+tmp/pids
+tmp/sockets
+bin
+tags
+public/assets
