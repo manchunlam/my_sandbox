@@ -7,9 +7,7 @@
 .rvmrc
 db/*.sqlite3
 log/*.log
-tmp
-tmp/pids
-tmp/sockets
+tmp/*
 bin
 tags
 public/assets

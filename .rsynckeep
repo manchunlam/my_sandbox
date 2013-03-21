@@ -1,2 +1,2 @@
-tmp/pids
-tmp/sockets
+tmp/pids/
+tmp/sockets/
