@@ -1,16 +1,28 @@
-# Sandbox Application
+# Testing Rails App with Capybara
 
-This is a sandbox application to test various Rails features, gems, interaction
-with Web Services, etc. The `master` branch will always remain a "minimal"
-application.
+## Setup
 
-## Topics Researched
+1. `Gemfile`, add
 
-The following list is what were tested in this sandbox. Every branch/tag started
-from the "minimal" application, and therefore each topic is completely
-independent of each other.
+    ```
+    group :development, :test do
+      gem 'capybara', '~>2.1.0'
+      gem 'rspec-rails', '~>2.13.2'
+    end
+    ```
 
-1. Asset Pipeline
-    1. Including External Libraries - tag `asset-pipeline`
-2. i18n
-    1. Form Helpers - tag `i18n`
+2. Generate `rspec` files
+
+    ```
+    bin/./rails g rspec:install
+    ```
+
+3. Load `capybara` in `spec_helper.rb`, and add
+    ```
+    require 'capybara/rails'
+    require 'capybara/rspec'
+    ```
+
+## Testing Examples
+
+
