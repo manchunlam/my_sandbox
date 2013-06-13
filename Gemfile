@@ -23,7 +23,14 @@ gem 'jquery-rails'
 # Use unicorn as the app server
 gem 'unicorn'
 
+group :development do
+  gem 'annotate', '~>2.5.0'
+end
+
 group :development, :test do
   gem 'capybara', '~>2.1.0'
   gem 'rspec-rails', '~>2.13.2'
+  gem 'factory_girl_rails', '~>4.2.1'
+  gem 'database_cleaner', '~>1.0.1'
+  gem 'selenium-webdriver', '~>2.33.0'
 end
