@@ -1,34 +1,31 @@
-# source: http://d.hatena.ne.jp/milk1000cc/20100804/1280893810
-rails_root = File.expand_path('../..', __FILE__) 
-# Use at least one worker per core if you're on a dedicated server,
-# more will usually help for _short_ waits on databases/caches
-worker_processes 2
- 
+# _*_ coding: utf-8 _*_
+worker_processes 1
+
 # Help ensure your application will always spawn in the symlinked
 # "current" directory that Capistrano sets up.
-working_directory "/home/deploy/Projects/manchunlam/rails_sandbox" # e.g. "/Users/joelam/Projects/Vitrue/tabs"
- 
+
+rails_root = File.expand_path('../..', __FILE__)
+working_directory rails_root
+
 # listen on a Unix domain socket
 # directory path_to_project/tmp/sockets must exist
-listen File.expand_path('tmp/sockets/unicorn.sock', rails_root), :backlog => 64
- 
+listen File.expand_path('tmp/sockets/unicorn.sock', ENV['RAILS_ROOT']), :backlog => 64
+
 # pid
 # directory path_to_project/tmp/pids must exist
-pid File.expand_path('tmp/pids/unicorn.pid', rails_root)
- 
+pid File.expand_path('tmp/pids/unicorn.pid', ENV['RAILS_ROOT'])
+
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path File.expand_path('log/unicorn.log', rails_root)
-stdout_path File.expand_path('log/unicorn.log', rails_root)
- 
+
 # combine REE with "preload_app true" for memory savings
 # http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
 preload_app true
- 
+
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
- 
+
   old_pid = "#{ server.config[:pid] }.oldbin"
   unless old_pid == server.pid
     begin
@@ -38,7 +35,7 @@ before_fork do |server, worker|
     end
   end
 end
- 
+
 after_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
 end
