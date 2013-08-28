@@ -11,7 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery_ujs
 //= require jquery-migrate-1.2.1
-//= require backbone
-//= require json2
 //= require underscore
+//= require json2
+//= require backbone
+//= require_tree ./models
+//= require app
