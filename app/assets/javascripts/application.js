@@ -11,4 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require_tree .
+//= require jquery-migrate-1.2.1
+//= require backbone
+//= require json2
+//= require underscore
