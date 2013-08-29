@@ -9,6 +9,7 @@ application.
 1. [Javascript Functions Explained](#javascript-functions-explained)
 2. [Setting up Backbone](#setting-up-backbone)
 3. [Backbone Model](#backbone-model)
+4. [Backbone View (Element)](#backbone-view-element)
 
 ## Javascript Functions Explained
 
@@ -110,6 +111,10 @@ libraries)
     therefore, `bootstrap-app` is loaded before `models`
     * `app.js` initializes a Backbone model, therefore the model definition
     must be required beforehand
+4. To use JST, the gem `ejs` is needed in the Rails app.
+5. For asset pipeline to work,
+    1. The templates path must be added to `config.assets.paths`
+    2. Require templates directory in `application.js`
 
 ## Backbone Model
 
@@ -137,3 +142,44 @@ This branch demonstrates how to save a `Backbone.Model` to a Rails backend.
       .done(function(model, xhr, options) {
       });
     ```
+
+## Backbone View (Element)
+
+An Element View is designed to react to __only__ its associated model. The
+golden rules are
+
+1. Listen to model events to know __when__ to change itself
+2. Contains __only__ display logic, and __only__ affects itself
+3. Changes that are __not__ within itself, must be issued through `event`
+triggers
+
+    This is assuming some other components and listening to this Element View,
+    and react accordingly.
+
+Basically, Element View __only deals with itself__.
+
+### Coding Conventions
+
+1. Always contains a `render()` method
+2. `render()` always ends with
+
+    ```javascript
+    return this;
+    ```
+3. Make sure `this` in all methods refer to itself.
+
+    ```javascript
+    _.bindAll(this, 'render', 'otherMethod');
+    ```
+4. Use JST instead of inline HTML. Pass in a template, or use
+`JST['my_view']` inside `render()`. For example,
+
+    ```javascript
+    new ItemView({ template: JST['items/item'] });
+    ```
+
+    This will tell `ItemView` to render a template residing in
+    `app/assets/templates/items/item` with its data.
+
+5. Pass in `el` instead of having the `el` selector hardcoded inside the View
+definition, so the "Immediate" pattern can be used for faster page loading.
