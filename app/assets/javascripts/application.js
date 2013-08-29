@@ -16,5 +16,5 @@
 //= require underscore
 //= require json2
 //= require backbone
-//= require_tree ./models
+//= require models
 //= require app
