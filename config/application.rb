@@ -56,6 +56,9 @@ module RailsSandbox
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # Add Backbone templates path to asset path
+    config.assets.paths << Rails.root.join('app/assets/templates')
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end

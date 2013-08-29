@@ -17,6 +17,7 @@
 //= require json2
 //= require backbone
 //= require bootstrap-app
+//= require_tree ../templates
 //= require models
 //= require views
 //= require app
