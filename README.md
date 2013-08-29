@@ -70,17 +70,29 @@ the application namespace is `App`. The common way to create such namespace is
     var App = App || {};
     ```
 2. Any variables inside the application should be set with the above namespace,
-for example,
+sub-namespaces are used to group similar components together. For example, all
+Backbone models are grouped under the `App.models` container.
 
     ```javascript
-    App.Item = Backbone.Model.extend({});
+    App.models.Item = Backbone.Model.extend({});
     ```
 
-    The above defined an `Item` model under the namespace `App`. When we need
-    an "item" inside our application, we initialize it with
+    The above defined an `Item` model under the namespace `App.model`. When we
+    need an "item" inside our application, we initialize it with
 
     ```javascript
-    new App.Item({ name: 'foobar' });
+    new App.models.Item({ name: 'foobar' });
+    ```
+3. Since namespaces are needed for Backbone model, collection, view, etc
+definition, we put the namespace definitions into `bootstrap-app.js`. This JS
+file is loaded __before__ any application javascripts (not including external
+libraries)
+
+    > bootstrap-app.js
+
+    ```javascript
+    var App = App || {};
+    App.models = App.models || {};
     ```
 3. Order of javascript `require` in `application.js` matters! A snippet from
 `application.js`
@@ -88,11 +100,14 @@ for example,
     ```javascript
     //= require underscore
     //= require backbone
+    //= require bootstrap-app
     //= require_tree ./models
     //= require app
     ```
     * `backbone.js` is dependent on `underscore.js`, therefore `underscore`
     __must__ preceed `backbone`
+    * Backbone models require the presence `App` and `App.models` namespace,
+    therefore, `bootstrap-app` is loaded before `models`
     * `app.js` initializes a Backbone model, therefore the model definition
     must be required beforehand
 
