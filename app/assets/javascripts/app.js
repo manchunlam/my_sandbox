@@ -1,18 +1,15 @@
 $(function() {
   'use strict';
+  // initiate model
+  var item = new App.models.Item({ name: 'hello world' })
+
+  // initiate view
+  var itemView = new App.views.ItemView({ el: $('ul.items'), model: item,
+    template: JST['items/item'] });
+
   $('button#add').on('click', function(event) {
-    console.log('yay');
-    var item = new App.models.Item({ name: 'foobar' });
-    item.save()
-      .done(function(model, xhr, options) {
-        console.log(model);
-        console.log(xhr);
-        console.log(options);
-      })
-      .fail(function(model, xhr, options) {
-        console.log(model);
-        console.log(xhr);
-        console.log(options);
-      });
+    event.preventDefault();
+
+    item.save();
   });
 });
