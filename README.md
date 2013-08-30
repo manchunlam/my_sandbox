@@ -10,6 +10,7 @@ application.
 2. [Setting up Backbone](#setting-up-backbone)
 3. [Backbone Model](#backbone-model)
 4. [Backbone View (Element)](#backbone-view-element)
+5. [Backbone Collection](#backbone-collection)
 
 ## Javascript Functions Explained
 
@@ -198,3 +199,21 @@ definition, so the "Immediate" pattern can be used for faster page loading.
     ```
 
     See branch `jl/backbone-view-built-in-template` for an example.
+
+## Backbone Collection
+
+1. Model can be added, and saved immediately (`create`); or without being saved
+(`add`)
+2. Collection have a ton of events to signal a change in itself, or individual
+models
+3. Collection __does not__ have its own `save` method.
+    1. Models are either individually saved to the backend, or
+    2. Serialize the whole collection, and send the JSON to the server
+
+### Coding Convention
+
+1. The `Backbone.Collection.url` property negates the necessity of
+`Backbone.Model.urlRoot`
+    * Let's say `ItemsCollection` has a `url` "/items", then its model will
+      be saved as a POST to "/items"
+2. It must have a `model` property
