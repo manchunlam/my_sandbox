@@ -183,3 +183,18 @@ Basically, Element View __only deals with itself__.
 
 5. Pass in `el` instead of having the `el` selector hardcoded inside the View
 definition, so the "Immediate" pattern can be used for faster page loading.
+
+### Variation
+
+1. If you know the View's template never changes, you can always bake it in
+
+    ```javascript
+    template: JST['items/item'],
+
+    render: function() {
+      this.$el.append(this.template({ name: 'something' }));
+      return this;
+    }
+    ```
+
+    See branch `jl/backbone-view-built-in-template` for an example.
