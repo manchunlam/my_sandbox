@@ -19,6 +19,6 @@
 //= require bootstrap-app
 //= require_tree ../templates
 //= require models
-//= require views
 //= require collections
+//= require views
 //= require app
