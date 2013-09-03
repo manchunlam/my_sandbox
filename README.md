@@ -11,6 +11,7 @@ application.
 3. [Backbone Model](#backbone-model)
 4. [Backbone View (Element)](#backbone-view-element)
 5. [Backbone Collection](#backbone-collection)
+6. [Backbone View (Collection)](#backbone-view-collection)
 
 ## Javascript Functions Explained
 
@@ -217,3 +218,25 @@ models
     * Let's say `ItemsCollection` has a `url` "/items", then its model will
       be saved as a POST to "/items"
 2. It must have a `model` property
+
+## Backbone View (Collection)
+
+1. Collection View is usually the parent view, containing multiple Element
+Views.
+2. It listens to the `add` event on its associated `collection`, and render
+Element views for each.
+
+### Coding Convention
+
+1. `el`:
+    1. Element View: specify `tagName`, `className`, and let Backbone __create__
+the `el` element (see `views/item.js`)
+    2. Collection View: either pass in a selector after DOM ready
+(see `app.js`); or specify `el` in the class definition, and let Backbone
+create it (see the Backbone Todo example)
+2. `Backbone.Model.save()`
+    1. Use Backbone `sucess` (or `error`) callbacks if you want the returned
+`model` to be a `Backbone.Model`
+    2. Use the jQuery `done` (or `fail`) callback chain if you want the returned
+`model` to be exactly what the server returns to you (no Backbone stuff). See
+`views/items.js` for an example

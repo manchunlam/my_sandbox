@@ -24,9 +24,10 @@
     },
 
     saveModel: function(event) {
+      var view = this;
       this.model.save()
         .done(function(model, xhr, options) {
-          console.log(model);
+          view.$('span.item-id').text(model.id);
         });
     }
   });
